@@ -5,8 +5,6 @@ use strict;
 use warnings;
 use autodie;
 
-use File::Basename;
-
 ################################################################################
 # handle command line arguments
 #------------------------------------------------------------------------------
@@ -45,6 +43,10 @@ while( my $header = readline $fh_in)
         say $header;
         say $sequence;
     }
+    else 
+    {
+        warn "$sequence not matched";
+    }
 }
 
 sub exit_giving_usage 
@@ -63,14 +65,6 @@ sub looks_like_flag
 {
     my $arg = shift;
     return index($arg, '-') == 0;
-}
-
-sub remove_path_and_ext
-{
-    my $file_name = shift;
-    (my $extensionless_name = $file_name) =~ s/\.[^.]+$//;
-    my $basename = basename($extensionless_name);
-    return $basename;
 }
 
 =head1 NAME
