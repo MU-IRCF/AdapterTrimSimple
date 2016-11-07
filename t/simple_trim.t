@@ -58,7 +58,7 @@ done_testing();
 
 sub filename_fastq {
     my ( $fh, $filename ) = tempfile();
-    my $string = fasta();
+    my $string = fastq();
     print {$fh} $string;
     close $fh;
     return $filename;
@@ -78,7 +78,7 @@ sub delete_temp_file {
     # diag( "deleted temp file '$filename'" );
 }
 
-sub fasta
+sub fastq
 {
     return <<'END';
 @parvalbumin-tidbit
